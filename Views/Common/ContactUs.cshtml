@@ -7,19 +7,33 @@
     Html.AddTitleParts(T("PageTitle.ContactUs").Text);
 }
 
-<div class="head-map">
-	
-</div>
+<div class="head-map"></div>
 
-<div class="page-title">
-				<h1>@T("PageTitle.ContactUs")</h1>
-			</div>
-<div class="page contact-page">
-@Html.Action("TopicBlock", "Topic", new { systemName = "ContactUs" })
-@Html.Widget("contactus_top")
-			
-			</div>
-    <div class="page-body">
+<div class="contactus-block">
+    <div class="contuctus-page-title">
+        Контакты
+    </div>
+    <div class="contactus-contacts clearfix">
+        <ul class="contactus-contacts-list">
+            <li class="contactus-contacts-list-item">
+                <div class="geo-icon"></div>
+                <span class="contacts-text">Владивосток, ул. Фонтанная 47, ст.2</span>
+            </li>
+            <li class="contactus-contacts-list-item">
+                <div class="mail-icon"></div>
+                <span class="contacts-text">it4us@it4us.ru</span>
+            </li>
+            <li class="contactus-contacts-list-item">
+                <div class="phone-icon"></div>
+                <p class="contacts-text">8 (423) 260 56 55</p>
+                <p class="contacts-text">8 (423) 265 55 56</p>
+            </li>
+        </ul>
+    </div>
+    <div class="contactus-form-header">
+        Обратная связь
+    </div>
+    <div class="contuctus-form">
         @if (Model.SuccessfullySent)
         {
             <div class="result">
@@ -30,8 +44,8 @@
         {
             using (Html.BeginForm())
             {
-			
-			
+            
+            
                 var validationSummary = Html.ValidationSummary(true);
                 if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
                 {
@@ -40,7 +54,7 @@
                 <div class="fieldset">
                     <div class="form-fields">
                         <div class="inputs">
-						    @Html.LabelFor(model => model.FullName)
+                            @Html.LabelFor(model => model.FullName)
                             @Html.TextBoxFor(model => model.FullName, new { @class = "fullname", placeholder = T("ContactUs.FullName.Hint") })
                             @Html.ValidationMessageFor(model => model.FullName)
                         </div>
@@ -74,8 +88,9 @@
                     <input type="submit" name="send-email" class="button-1 contact-us-button" value="@T("ContactUs.Button")" />
                 </div>
             }
+            @Html.Widget("contactus_bottom")
         }
-        @Html.Widget("contactus_bottom")
     </div>
+</div>
 
 

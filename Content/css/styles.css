@@ -1,3 +1,14 @@
+/********FLOAT FIX*********/
+.clearfix:before, .clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after{
+	clear: both;
+}
+/*********************/
+
 
 /***********FONTS****************/
 
@@ -7247,7 +7258,76 @@ pre {
 }
 
 .head-map{
+	margin-top: -30px;
 	background: url('../images/Map1.png');
-	height: 499px;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 300px; //posmotret' na bolshem razreshenii, esli che, spelat' v procentah
 	width: 100%;
+}
+
+.contactus-block{
+	width: 1003px;
+	margin: auto;
+	margin-top: -100px;
+	background-color: white;
+	padding-top: 35px;
+}
+
+.contuctus-page-title{
+	font-family: OS-SemiBold;
+	font-size: 38px;
+	line-height: 38px;
+	text-align: center;
+	color: #2c3c50;
+	margin-bottom: 40px;
+}
+
+.contactus-contacts{
+	margin: auto;
+	max-width: 700px;
+	margin-bottom: 70px;
+}
+
+.contactus-contacts-list-item{
+	width: 230px;
+	display: inline-block;
+	text-align: center;
+	font-size: 18px;
+	font-family: OS-Regular;
+	color: #4f6677;
+	float: left;
+}
+
+.geo-icon{
+	height: 33px;
+	width: 40px;
+	margin: auto;
+	margin-bottom: 20px;
+	background: url(../images/contacts-geo.png) center no-repeat;
+
+}
+
+.mail-icon{
+	height: 33px;
+	width: 40px;
+	margin: auto;
+	margin-bottom: 20px;
+	background: url(../images/contacts-mail.png) center no-repeat;
+}
+
+.phone-icon{
+	height: 33px;
+	width: 40px;
+	margin: auto;
+	margin-bottom: 20px;
+	background: url(../images/contacts-phone.png) center no-repeat;
+}
+
+.contactus-form-header{
+	font-family: OS-SemiBold;
+	font-size: 32px;
+	line-height: 38px;
+	text-align: center;
+	color: #2c3c50;
 }
