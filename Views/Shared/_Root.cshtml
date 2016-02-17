@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Root.Head.cshtml";
+}
+@Html.Widget("body_start_html_tag_after")
+@Html.Partial("_Notifications")
+@Html.Action("JavaScriptDisabledWarning", "Common")
+@Html.Partial("OldInternetExplorerWarning")
+
+<div class="master-wrapper-page">
+
+@if (Request.RawUrl.Equals("/") || Request.RawUrl.Equals("/home/index", StringComparison.CurrentCultureIgnoreCase))
+        {
+			@Html.Action("AdminHeaderLinks", "Common")
+			<div class="landingzone" >
+            <div class="landingzone-opacity" >
+			</div>
+				
+				@Html.Partial("Header")
+				<script type="text/javascript">
+					AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
+				</script>
+				<div class="header-menu">
+					@Html.Action("TopMenu", "Catalog")
+				</div>
+				<div class="landingpics">
+					<ul class="landingpics-ul">
+					<li>
+						<div class="landingpics-service"><h2>Наши услуги</h2> <p>IT-консалтинг, круглосуточная техподдержка, облачные услуги, инф. безопасность</p></div>
+					</li>
+					<li>
+						<div class="landingpics-shop"><h2>Магазин</h2> <p>Маршрутизаторы, IP-камеры, системы хранения, коммутаторы и др.</p></div>
+					</li>
+					<li>
+						<div class="landingpics-forclient"><h2>Для клиентов</h2><p>Специальный клиентский сервис для работы </p> <p style="padding-top:0;">с нашими ресурсами</p></div>
+					</li>
+					</ul>
+				</div>
+			</div>	
+        }
+
+else{
+    @Html.Action("AdminHeaderLinks", "Common")
+    @Html.Partial("Header")
+    <script type="text/javascript">
+        AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
+    </script>
+    <div class="header-menu">
+        @Html.Action("TopMenu", "Catalog")
+    </div>
+}
+    <div class="master-wrapper-content">
+        @Html.Widget("content_before")
+@if (IsSectionDefined("Breadcrumb"))
+        {
+            @RenderSection("Breadcrumb") 
+        }
+        
+        <div class="master-column-wrapper">
+			
+            @RenderBody()
+			
+        </div>
+        @Html.Widget("content_after")
+    </div>
+    @Html.Action("Footer", "Common")
+</div>
+@Html.Action("EuCookieLaw", "Common")
+@Html.Widget("body_end_html_tag_before")
+<script>
+$('.landingpics-service').on('click', function () {
+  window.location = '/services'});
+$('.landingpics-shop').on('click', function () {
+  window.location = '/products'});
+$('.landingpics-forclient').on('click', function () {
+  window.location = 'https://cabinet.it4us.ru'});
+</script>

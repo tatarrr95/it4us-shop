@@ -1,0 +1,12 @@
+@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+}
+@if (IsSectionDefined("Breadcrumb"))
+{
+    @section Breadcrumb {
+        @RenderSection("Breadcrumb")
+    }
+}
+<div class="contacts-main">
+    @RenderBody()
+</div>

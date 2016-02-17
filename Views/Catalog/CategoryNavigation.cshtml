@@ -1,0 +1,451 @@
+﻿@model CategoryNavigationModel
+@using Nop.Web.Models.Catalog;
+
+@functions{
+    public bool BreadCrumbContainsCurrentCategoryId(CategorySimpleModel category)
+    {
+        if (Model.CurrentCategoryId == 0)
+            return false;
+
+        if (category.Id == Model.CurrentCategoryId)
+            return true;
+
+        foreach (var subCategory in category.SubCategories)
+        {
+            if (BreadCrumbContainsCurrentCategoryId(subCategory))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    public bool BreadCrumbContainsCurrentService(ServiceList serv)
+    {
+        if (serv == null)
+            return false;
+
+        if (Request.RawUrl.Equals("/" + serv.URL, StringComparison.CurrentCultureIgnoreCase))
+            return true;
+
+        foreach (var ser in serv.inclosure)
+        {
+            if (BreadCrumbContainsCurrentService(ser))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    public class ServiceList
+    {
+        public string Name = "";
+        public string URL = "";
+        public List<ServiceList> inclosure = new List<ServiceList>();
+
+    }
+
+
+
+
+    public bool IsForServicePages(string currentpage)
+    {
+        List<string> pages = new List<string>();
+        pages.Add("/");
+        //pages.Add("/aboutus");
+        //pages.Add("/ourclients");
+        pages.Add("/support365");
+        pages.Add("/small-office");
+        pages.Add("/office-plus");
+        pages.Add("/my-office");
+        pages.Add("/it-on-hour");
+        //pages.Add("/contactus");
+        pages.Add("/services");
+        pages.Add("/it-support-365");
+        pages.Add("/remote-access");
+        pages.Add("/CCTV");
+        pages.Add("/network-manage");
+        pages.Add("/traffic-analysing");
+        pages.Add("/remote-access");
+        pages.Add("/it-consulting");
+        pages.Add("/information-security");
+        pages.Add("/standard-IS");
+        pages.Add("/business-IS");
+        pages.Add("/it-engineering");
+        pages.Add("/engineering-systems");
+        pages.Add("/virtualization");
+        pages.Add("/smart-home");
+        pages.Add("/audio-video-services");
+        pages.Add("/cctv-home");
+        pages.Add("/cctv-office");
+        pages.Add("/cctv-systems");
+        pages.Add("/iptel-office");
+        pages.Add("/cloud-services");
+        pages.Add("/mail-server-service");
+        pages.Add("/ELK-service");
+        pages.Add("/network-traffic-monitoring");
+        pages.Add("/internet-control-service");
+        pages.Add("/printing-control");
+        pages.Add("/infrastructure-service");
+        pages.Add("/support-service");
+		pages.Add("/cloud-ATS");
+	
+	
+        if (pages.Contains(currentpage, StringComparer.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        return false;
+    }
+}
+@helper RenderCategoryLine(CategorySimpleModel category)
+{
+   @* bool active = category.Id == Model.CurrentCategoryId || category.SubCategories.Count(BreadCrumbContainsCurrentCategoryId) > 0;
+    bool last = category.Id == Model.CurrentCategoryId;*@
+	
+	bool active = Request.RawUrl.Equals("/" + category.SeName, StringComparison.CurrentCultureIgnoreCase) || category.SubCategories.Count(BreadCrumbContainsCurrentCategoryId) > 0;
+    bool last = Request.RawUrl.Equals("/" + category.SeName, StringComparison.CurrentCultureIgnoreCase);
+    
+	
+    string liClass = active ? "active" : "inactive";
+    if (last)
+    {
+        liClass += " last";
+    }
+    <li class="@liClass">
+        <a href="@Url.RouteUrl("Category", new { SeName = category.SeName })">
+            @category.Name
+        @if (category.NumberOfProducts.HasValue)
+        {
+            <text> </text>@T("Categories.TotalProducts", category.NumberOfProducts.Value)
+        }
+    </a>
+    @{
+        if (category.Id == Model.CurrentCategoryId ||
+            category.SubCategories.Count(BreadCrumbContainsCurrentCategoryId) > 0)
+        {
+            if (category.SubCategories.Count > 0)
+            {
+                <ul class="sublist">
+                    @foreach (var subCategory in category.SubCategories)
+                    {
+                        @RenderCategoryLine(subCategory)
+                    }
+                </ul>
+            }
+        }
+    }
+</li>
+}
+
+@helper RenderServiceList(ServiceList service)
+{
+    bool active = Request.RawUrl.Equals("/" + service.URL, StringComparison.CurrentCultureIgnoreCase) || service.inclosure.Count(BreadCrumbContainsCurrentService) > 0;
+    bool last = Request.RawUrl.Equals("/" + service.URL, StringComparison.CurrentCultureIgnoreCase);
+    string liClass = active ? "active" : "inactive";
+    if (last)
+    {
+        liClass += " last";
+    }
+	
+	if(service.inclosure.Count>0)
+	{
+		liClass += " subcontains";
+	}
+	else
+	{
+		liClass += " subnotcontains";
+	}
+
+    <li class="@liClass">
+        <a href="@Url.RouteUrl("Category", new { SeName = service.URL })">
+            @service.Name
+            @*@if (service.inclosure.Count>0)
+                {
+                    <text> </text>@T("Categories.TotalProducts", service.inclosure.Count)
+                }*@
+        </a>
+        @{
+            if (Request.RawUrl.Equals("/" + service.URL, StringComparison.CurrentCultureIgnoreCase) ||
+            service.inclosure.Count(BreadCrumbContainsCurrentService) > 0)
+            {
+                if (service.inclosure.Count > 0)
+                {
+                    <ul class="sublist">
+                        @foreach (var ser in service.inclosure)
+                        {
+                            @RenderServiceList(ser)
+                        }
+                    </ul>
+                }
+            }
+        }
+    </li>
+}
+
+
+@{
+    int i = 1;
+
+
+    List<ServiceList> sl = new List<ServiceList>()
+    {
+            new ServiceList()
+            {
+                Name = "IT поддержка вашего офиса",
+                URL = "it-support-365",
+                inclosure = new List<ServiceList>()              
+                {
+                    new ServiceList() 
+                    {
+                        Name = "Малый офис",
+                        URL = "small-office"
+                    },
+                    new ServiceList() 
+                    {
+                        Name = "Офис+",
+                        URL = "office-plus"
+                    },
+                    new ServiceList() 
+                    {
+                        Name = "Мой Офис",
+                        URL = "my-office"
+                    },
+                    new ServiceList() 
+                    {
+                        Name = "IT на час",
+                        URL = "it-on-hour"
+                    }
+                }
+            },
+            new ServiceList()
+            {
+                Name = "IT консалтинг",
+                URL = "it-consulting"
+            },
+            new ServiceList()
+            {
+                Name = "Информационная безопасность",
+                URL = "information-security",
+                inclosure = new List<ServiceList>()              
+                {
+                    new ServiceList() 
+                    {
+                        Name = "Стандартное ИБ",
+                        URL = "standard-IS"
+                    },
+                    new ServiceList() 
+                    {
+                        Name = "ИБ как процесс в вашем бизнесе",
+                        URL = "business-IS"
+                    }
+                }
+            },
+            new ServiceList()
+            {
+                Name = "Проектирование и построение IT",
+                URL = "it-engineering",
+                inclosure = new List<ServiceList>()              
+                {
+                    new ServiceList() 
+                    {
+                        Name = "Инженерные системы",
+                        URL = "engineering-systems"
+                    },
+                    new ServiceList() 
+                    {
+                        Name = "Виртуализация",
+                        URL = "virtualization"
+                    },
+                    new ServiceList() 
+                    {
+                        Name = "Умные дома",
+                        URL = "smart-home"
+                    },
+					new ServiceList() 
+                    {
+                        Name = "Видеонаблюдение дома",
+                        URL = "cctv-home"
+                    },
+                    new ServiceList() 
+                    {
+                        Name = "Видеонаблюдение в офисе",
+                        URL = "cctv-office"
+                    },
+					
+                    new ServiceList() 
+                    {
+                        Name = "Системы видеонадлюдения",
+                        URL = "cctv-systems"
+                    },
+                    new ServiceList() 
+                    {
+                        Name = "IP телефония в офисе",
+                        URL = "iptel-office"
+                    }
+                }
+            },
+            @*new ServiceList()
+            {
+                Name = "Аудио/видео услуги",
+                URL = "audio-video-services",
+                inclosure = new List<ServiceList>()              
+                {
+                    
+                }
+            },*@
+            new ServiceList()
+            {
+                Name = "Услуги в облаках",
+                URL = "cloud-services",
+                inclosure = new List<ServiceList>()              
+                {
+                    new ServiceList() 
+                    {
+                        Name = "Почтовый сервер",
+                        URL = "mail-server-service"
+                    },
+                    new ServiceList() 
+                    {
+                        Name = "Облачная АТС",
+                        URL = "cloud-ATS"
+                    },
+                    new ServiceList() 
+                    {
+                        Name = "Личный кабинет",
+                        URL = "ELK-service",
+                        inclosure = new List<ServiceList>()
+                            {
+									new ServiceList()
+									{
+										Name = "Удаленный доступ",
+										URL = "remote-access"
+										
+									},
+                                    new ServiceList() 
+                                    {
+                                        Name = "Аудит сетевого трафика",
+                                        URL = "network-traffic-monitoring"
+                                    },
+                                    new ServiceList() 
+                                    {
+                                        Name = "Контроль за internet",
+                                        URL = "internet-control-service"
+                                    },
+                                    new ServiceList() 
+                                    {
+                                        Name = "Контроль за печатью",
+                                        URL = "printing-control"
+                                    },
+                                    new ServiceList() 
+                                    {
+                                        Name = "Ваша инфраструктура",
+                                        URL = "infrastructure-service"
+                                    },
+                                    new ServiceList() 
+                                    {
+                                        Name = "Техническая поддержка",
+                                        URL = "support-service"
+                                    },
+                                    new ServiceList() 
+                                    {
+                                        Name = "Видеонаблюдение",
+                                        URL = "cctv"
+                                    }
+                            }
+                    }
+                }
+            }
+    };
+
+}
+
+
+@if (!IsForServicePages(Request.RawUrl))
+ {
+	<div class="block block-headermenu-self-navigation">
+		 <div class="title">
+						<strong>Корзина</strong>
+		</div>
+		 
+			 <div class="listbox header-links-wrapper">
+						@Html.Action("HeaderLinks", "Common") 
+						@Html.Action("FlyoutShoppingCart", "ShoppingCart")
+			</div>      
+		
+	</div>
+}
+@if (Model.Categories.Count > 0)
+{
+
+    if (IsForServicePages(Request.RawUrl))
+    {
+        <div class="block block-services-self-navigation">
+            <div class="title">
+                <strong>Типы услуг</strong>
+            </div>
+            <div class="listbox">
+                <ul class="list">
+
+                    @foreach (ServiceList ser in sl)
+                    {
+                        @RenderServiceList(ser);
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="block block-category-self-navigation">
+            <div class="title">
+                <strong>Каталог</strong>@*<strong>@T("Categories")</strong>*@
+            </div>
+            <div class="listbox">
+                <ul class="list">
+                    @*
+                        @foreach (var category in Model.Categories)
+                        {
+                            @RenderCategoryLine(category)
+                        }
+                    *@
+                    @*	 <li> <a href="@Url.RouteUrl("Category", new { SeName = "products" })">Товары</a>*@
+                    <ul class="sublist">
+                        <li>
+                            <a href="@Url.RouteUrl("Category", new { SeName = "network-hardware" })">Сетевое оборудование</a>
+
+                            <ul class="sublist">
+
+                                <li> <a href="@Url.RouteUrl("Category", new { SeName = "wireless-routers" })">Беспроводные маршрутизаторы</a></li>
+                                <li> <a href="@Url.RouteUrl("Category", new { SeName = "routers" })">Маршрутизаторы</a></li>
+                                <li> <a href="@Url.RouteUrl("Category", new { SeName = "switches" })">Коммутаторы</a></li>
+                                @*<li> <a href="@Url.RouteUrl("Category", new { SeName = "network-hardware-accessories" })">Комплектующие</a></li> *@
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="@Url.RouteUrl("Category", new { SeName = "office-hardware" })">Офисное оборудование</a>
+
+                            <ul class="sublist">
+
+                                @*<li> <a href="@Url.RouteUrl("Category", new { SeName = "Storage-systems" })">Системы хранения</a></li>
+                                    <li> <a href="@Url.RouteUrl("Category", new { SeName = "printers" })">Принтеры</a></li> *@
+                                <li> <a href="@Url.RouteUrl("Category", new { SeName = "Storage-systems" })">Системы хранения</a></li>
+                                @*<li> <a href="@Url.RouteUrl("Topic", new { SeName = "t//underconstruction" })">Принтеры</a></li> *@
+                                <li> <a href="@Url.RouteUrl("Category", new { SeName = "ipcam" })">IP камеры</a></li>
+
+                            </ul>
+                        </li>
+                        @*</ul>*@
+                    </ul>
+            </div>
+        </div>
+    }
+}
