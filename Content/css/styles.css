@@ -454,7 +454,6 @@ label, label + * {
 /*********** GLOBAL FORMS ***********/
 
 
-
 .fieldset, .section {
 	position: relative;
 	margin: 0 0 40px;
@@ -472,9 +471,10 @@ label, label + * {
 }
 .form-fields {
 	position: relative;
-	border-top: 1px solid #e6e6e6;
+	border-top: 0px;
 	background-color: #f9f9f9;
 	padding: 30px 15px;
+	height:300px;
 }
 .inputs {
 	position: relative;
@@ -483,17 +483,51 @@ label, label + * {
 	white-space: nowrap; /*fix for 'required' elements*/
     font-size: 0;
 }
+.inputs-Name{
+	position: absolute;
+	top: 40px;
+	left: 160px;
+	width: 330px;
+	white-space: nowrap; /*fix for 'required' elements*/
+    font-size: 0;
+}
+.inputs-Name input#FullName{
+	width: 100%;
+}
+.inputs-Mail{
+	position: absolute;
+	top: 40px;
+	right: 150px;
+	width: 330px;
+	white-space: nowrap; /*fix for 'required' elements*/
+    font-size: 0;
+}
+.inputs-Mail input#Email{
+	width: 100%;
+}
+.inputs-Message{
+	position: absolute;
+	top: 110px;
+	left: 160px;
+	width: 695px;
+	white-space: nowrap; /*fix for 'required' elements*/
+    font-size: 0;
+}
+.inputs-Message textarea#Enquiry{
+	width: 100%;
+}
 .inputs:after {
 	content: "";
 	display: block;
 	clear: both;
 }
-.inputs label {
+.inputs-Name label, .inputs-Mail label, .inputs-Message label {
 	display: block;
 	width: 100%;
 	margin: 0 0 10px;
-	text-align: center;
-    font-size: 14px; /*reset zeroing*/
+	text-align: left;
+	font-family: OS-SemiBold;
+    font-size: 16px; /*reset zeroing*/
 	color: #444;
 }
 .inputs input[type="text"],
@@ -564,6 +598,17 @@ label, label + * {
 }
 .captcha-box input {
 	height: auto;
+}
+.buttons input.contact-button{
+	font-family: OS-SemiBold;
+	font-size: 18px;
+	color: white;
+	position: absolute;
+	left: 425px;
+	width: 180px;
+	height: 44px;
+	border-radius: 33px;
+	background: url('../images/Button-1.png');
 }
 
 
@@ -7325,9 +7370,13 @@ pre {
 }
 
 .contactus-form-header{
+	border-bottom: 0px;
 	font-family: OS-SemiBold;
 	font-size: 32px;
 	line-height: 38px;
 	text-align: center;
 	color: #2c3c50;
+}
+.contuctus-form{
+	height: 400px;
 }

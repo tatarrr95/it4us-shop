@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Root.Head.cshtml";
 }
 @Html.Widget("body_start_html_tag_after")
@@ -67,6 +66,7 @@ else{
 </div>
 @Html.Action("EuCookieLaw", "Common")
 @Html.Widget("body_end_html_tag_before")
+
 <script>
 $('.landingpics-service').on('click', function () {
   window.location = '/services'});
