@@ -369,9 +369,7 @@ label, label + * {
 	margin-top: -30px;
 	float: left;
 }
-.center-2{
-	
-}
+
 .side-2 {
 	margin: 0 0 50px;
 }
@@ -6308,7 +6306,7 @@ pre {
 	/*width: 25%;*/
     width:22%;
 }
-.side-2 .block.block-services-self-navigation .title {
+.side-2 .block.block-services-self-navigation .title, .block.block-category-self-navigation .title {
 	border:none;
 }
 .page {
@@ -6829,9 +6827,11 @@ pre {
 
 .breadcrumb {
 	/*margin: 0 0 20px;*/
+	display: inline-block;
     float: right;
 	margin-right: 580px;
 	margin-top: 10px;
+	overflow: hidden;
 }
 
 .landingpage-item-box .buttons {
@@ -7391,6 +7391,10 @@ pre {
 	height: 44px;
 	border-radius: 33px;
 	background: url(/Themes/it4us/Content/images/Button-1.png);
+}
+
+.contactus-form-fieldset{
+	background-color: #ffffff;
 }
 
 /************МОДАЛЬНОЕ ОКНО***************/

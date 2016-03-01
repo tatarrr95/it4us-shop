@@ -5,6 +5,7 @@
 @Html.Partial("_Notifications")
 @Html.Action("JavaScriptDisabledWarning", "Common")
 @Html.Partial("OldInternetExplorerWarning")
+<script src="../js/modernizr-custom.js"></script>
 
 <div class="master-wrapper-page">
 
@@ -65,13 +66,13 @@ else{
 }
     <div class="master-wrapper-content">
         @Html.Widget("content_before")
-@if (IsSectionDefined("Breadcrumb"))
+
+        
+        <div class="master-column-wrapper">
+			@if (IsSectionDefined("Breadcrumb"))
         {
             @RenderSection("Breadcrumb") 
         }
-        
-        <div class="master-column-wrapper">
-			
             @RenderBody()
 			
         </div>
