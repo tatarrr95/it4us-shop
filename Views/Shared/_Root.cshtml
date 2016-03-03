@@ -21,21 +21,8 @@
 					AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
 				</script>
 				<div class="header-menu">
-					@Html.Action("TopMenu", "Catalog")
-				</div>
 
-				<div class="modal" id="modal-login">
-					<div>
-						<h2>Войти <p>в личный кабинет</p></h2>
-						<div class="modal-form-wrapper">
-							<form action="https://cabinet.it4us.ru/Account/Login?ReturnUrl=%2f" method="post">
-								<input type="text" placeholder="login" name="login">
-								<input type="password" placeholder="password" name="password">
-								<input type="submit" class="login-button">
-							</form>
-						</div>
-						<a href="#close" title="Закрыть">Закрыть</a>
-					</div>
+					@Html.Action("TopMenu", "Catalog")
 				</div>
 
 				<div class="landingpics">
@@ -69,10 +56,10 @@ else{
 
         
         <div class="master-column-wrapper">
-			@if (IsSectionDefined("Breadcrumb"))
+			<!-- @if (IsSectionDefined("Breadcrumb"))
         {
             @RenderSection("Breadcrumb") 
-        }
+        } -->
             @RenderBody()
 			
         </div>

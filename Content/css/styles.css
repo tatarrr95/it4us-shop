@@ -1086,7 +1086,9 @@ a.Companylogo{
 }*/
 
 .header-telephone {
-
+	margin-left: 90px;
+	width: 250px;
+	float: left;
 }
 .header-telephone p
 {
@@ -1096,8 +1098,8 @@ a.Companylogo{
 
     color: #2c3c50;
 	margin:0px;
-	padding-left: 40px;
-    padding-top:20px;
+	padding-left:10px;
+    padding-top:15px;
     padding-bottom:20px;
 
     /*background: no-repeat scroll left center;*/
@@ -1108,6 +1110,7 @@ a.Companylogo{
 
 
 .search-box form {
+	visibility: hidden;
 	display: inline-block;
 }
 .search-box form:after {
@@ -6826,12 +6829,8 @@ pre {
 
 
 .breadcrumb {
-	/*margin: 0 0 20px;*/
 	display: inline-block;
-    float: right;
-	margin-right: 580px;
 	margin-top: 10px;
-	overflow: hidden;
 }
 
 .landingpage-item-box .buttons {
@@ -7505,14 +7504,14 @@ display: block;
 position: absolute;
 right: -10px;
 top: -10px;
-width: 1.5em;
+width: 32px;
 padding: 1px 1px 1px 2px;
 
 /* Стили */
-text-decoration: none;
-text-shadow: none;
-text-align: center;
-font-weight: bold;
+text-decoration: none !important;
+text-shadow: none !important;
+text-align: center !important;
+font-weight: bold !important;
 background: #000;
 color: #fff;
 border: 3px solid #fff;
@@ -7548,4 +7547,63 @@ outline: 1px solid #000;
 .login-button:active {
  	background: #0f567a;
  	box-shadow: 0 3px #0f567a inset;
+}
+input {
+    outline: none;
+}
+input[type=search] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+    font-family: inherit;
+    font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+    display: none;
+}
+input[type=search] {
+    background: url('../images/search_button.png') no-repeat;
+	border: 0px;
+    width: 44px;
+	height: 44px;
+    padding-left: 10px;
+    color: transparent;
+    cursor: pointer;
+    -webkit-border-radius: 10em;
+    -moz-border-radius: 10em;
+    border-radius: 10em;
+    
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+input[type=search]:focus {
+	border: solid 1px #ccc;
+    width: 150px;
+    padding-left: 44px;
+    color: #000;
+    background-color: #fff;
+    cursor: auto;
+}
+input:-moz-placeholder {
+    color: transparent;
+}
+input::-webkit-input-placeholder {
+    color: transparent;
+}
+.search-form {
+	padding-top: 10px;
+	width: 200px;
+	display: inline-block;
+}
+/*Адаптация масштабов*/
+@media screen and (max-width: 320px) {
+@-ms-viewport { width: 320px; }
+}
+@media screen and (max-width: 320px) {
+@-ms-viewport { width: 320px; }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+@-ms-viewport { width: 768px; }
 }

@@ -48,13 +48,11 @@
     }
 </div>
 <div class="center-2">
-@if (IsSectionDefined("Breadcrumb"))
-{
-    @section Breadcrumb {
-        @RenderSection("Breadcrumb")
-    } 
-}
     @Html.Widget("main_column_before")
+     @if (IsSectionDefined("Breadcrumb"))
+        {
+            @RenderSection("Breadcrumb") 
+        }
     @RenderBody()
     @Html.Widget("main_column_after")
 </div>

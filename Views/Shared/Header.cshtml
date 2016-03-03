@@ -39,14 +39,35 @@
 			<a href="@Url.RouteUrl("HomePage")" class="header-logo-text">IT - путь к успеху</a>
 			</div>
         </div>
-		<div class=header-telephone>
+		<div class="header-telephone">
 			<p>8 (423) 2-605-655 </p>
+		</div>
+		<div class="search-form">
+		<form action="search" method="get">
+			<input placeholder="Поиск" type="search" name="q">
+		</form>
 		</div>
 		@*
         <div class="search-box">
             @Html.Action("SearchBox", "Catalog")
+        </div>*@
+
+
+        @*МОДАЛЬНОЕ ОКНО, ЗДЕСЬ, ЧТОБЫ ВЕЗДЕ БЫЛО ВИДНО, ТАК КАК В КОНТАКТАХ СВОЙ ЛАЙАУТ*@
+        <div class="modal" id="modal-login">
+            <div>
+                <h2>Войти <p>в личный кабинет</p></h2>
+                <div class="modal-form-wrapper">
+                    <form action="https://cabinet.it4us.ru/Account/Login?ReturnUrl=%2f" method="post">
+                        <input type="text" placeholder="login" name="login">
+                        <input type="password" placeholder="password" name="password">
+                        <input type="submit" class="login-button">
+                    </form>
+                </div>
+                <a href="#close" title="Закрыть">Закрыть</a>
+            </div>
         </div>
-		*@
+
     </div>
 </div>
 
