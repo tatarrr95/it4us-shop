@@ -359,15 +359,9 @@ label, label + * {
 	display: block;
 	clear: both;
 }
-.center-1 .page.home-page .page-body .breadcrumb{
-	visibility: hidden;
-}
+
 .center-1 {
 	margin: 0 0 100px;
-}
-.center-1 .breadcrumb{
-	margin-top: -30px;
-	float: left;
 }
 
 .side-2 {
@@ -1086,7 +1080,7 @@ a.Companylogo{
 }*/
 
 .header-telephone {
-	margin-left: 90px;
+	margin-left: 50px;
 	width: 250px;
 	float: left;
 }
@@ -3062,7 +3056,7 @@ a.Companylogo{
 }
 
 .home-page .topic-block {
-	margin: 60px 0 50px;
+	margin: 25px 0 50px;
 }
 .popup-window .topic-page {
 	padding: 15px;
@@ -5522,7 +5516,135 @@ pre {
 	float: none;
 	margin: auto !important;
 }
+/*Форма поиска*/
+.header-telephone{
+	display: block;
+	text-align: center;
+	margin: 0 auto !important;
+}
+/**********КОНТАКТЫ**********/
+.fieldset{
+	display: block !important;
+	text-align: center !important;
+}
+.head-map{
+	margin-top: -30px;
+	background: url('../images/Map1.png');
+	display: block !important;
+	text-align: center !important;
+	height: 300px; /*posmotret' na bolshem razreshenii, esli che, spelat' v procentah*/
+	width: 100%;
+}
 
+.contactus-block{
+	width: 100% !important;
+	margin: auto;
+	margin-top: -100px;
+	background-color: white;
+	padding-top: 35px;
+}
+.contactus-contacts-list-item{
+	width: 230px;
+	display: block !important;
+	text-align: center;
+	font-size: 18px;
+	font-family: OS-Regular;
+	color: #4f6677;
+	float: none !important;
+	margin: 0 auto;
+}
+
+.contuctus-form{
+	height: 500px !important;
+}
+
+.contactus-form-fieldset{
+	background-color: #ffffff;
+}
+.inputs {
+	position: relative;
+	margin: 0 0 15px;
+	text-align: center;
+	white-space: nowrap; /*fix for 'required' elements*/
+    font-size: 0;
+	display: block !important;
+	text-align: center !important;
+}
+.inputs-Name{
+	position: absolute !important;
+	top: 40px;
+	left: 25% !important;
+	width: 50% !important;
+	white-space: nowrap; /*fix for 'required' elements*/
+    font-size: 0;
+}
+.inputs-Name input#FullName{
+	width: 100%;
+}
+.inputs-Mail{
+	position: absolute !important;
+	left: 25% !important;
+	top: 120px !important;
+	width: 50%!important;
+	white-space: nowrap; /*fix for 'required' elements*/
+    font-size: 0;
+}
+.inputs-Mail input#Email{
+	width: 100%;
+}
+.inputs-Message{
+	position: absolute;
+	left: 25% !important;
+	top: 200px !important;
+	width: 50% !important;
+	white-space: nowrap; /*fix for 'required' elements*/
+    font-size: 0;
+}
+.inputs-Message textarea#Enquiry{
+	width: 100%;
+}
+.inputs:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.inputs-Name label, .inputs-Mail label, .inputs-Message label {
+	display: block;
+	width: 100%;
+	margin: 0 0 10px;
+	text-align: center !important;
+	font-family: OS-SemiBold;
+    font-size: 16px; /*reset zeroing*/
+	color: #444;
+}
+.inputs input[type="text"],
+.inputs input[type="password"],
+.inputs select, .inputs textarea {
+	width: 400px;
+	max-width: 100%;
+	background-color: #fff;
+}
+.fieldset .buttons {
+	position: absolute;
+	top: 400px;
+	width: 100% !important;
+	display: block !important;
+	text-align: center !important;
+	margin: 0 auto !important;
+}
+.contact-button{
+	font-family: OS-SemiBold;
+	font-size: 18px;
+	color: white;
+	position: static !important;
+	display: block;
+	text-align: center !important;
+	margin: 0 auto !important;
+	width: 180px;
+	height: 44px;
+	border-radius: 33px;
+	background: url(/Themes/it4us/Content/images/Button-1.png);
+}
 }
 
 
@@ -6941,7 +7063,9 @@ pre {
 
 
 /*** TOPICS ***/
-
+.home-page .page-body .breadcrumb{
+	visibility: hidden;
+}
 
 .center-1 .topic-block-title {
 	text-align: left;
@@ -7301,6 +7425,9 @@ pre {
 
 }
 
+/*@media all and (orientation:portrait){
+	
+}*/
 .head-map{
 	margin-top: -30px;
 	background: url('../images/Map1.png');
@@ -7425,11 +7552,13 @@ pointer-events: auto;
 }
 
 /* Содержание */
+
 .modal > div {
 width: 500px;
 background: #fff;
 position: relative;
 margin: 10% auto;
+color: #000 !important;
 
 -webkit-animation: minimise 500ms linear;
 
@@ -7548,20 +7677,20 @@ outline: 1px solid #000;
  	background: #0f567a;
  	box-shadow: 0 3px #0f567a inset;
 }
-input {
+.search-form input {
     outline: none;
 }
-input[type=search] {
+.search-form input[type=search] {
     -webkit-appearance: textfield;
     -webkit-box-sizing: content-box;
     font-family: inherit;
     font-size: 100%;
 }
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button {
+.search-form input::-webkit-search-decoration,
+.search-form input::-webkit-search-cancel-button {
     display: none;
 }
-input[type=search] {
+.search-form input[type=search] {
     background: url('../images/search_button.png') no-repeat;
 	border: 0px;
     width: 44px;
@@ -7578,32 +7707,23 @@ input[type=search] {
     transition: all .5s;
 }
 
-input[type=search]:focus {
+.search-form input[type=search]:focus {
 	border: solid 1px #ccc;
-    width: 150px;
+    width: 230px;
     padding-left: 44px;
     color: #000;
     background-color: #fff;
     cursor: auto;
 }
-input:-moz-placeholder {
+.search-form input:-moz-placeholder {
     color: transparent;
 }
-input::-webkit-input-placeholder {
+.search-form input::-webkit-input-placeholder {
     color: transparent;
 }
 .search-form {
 	padding-top: 10px;
-	width: 200px;
+	width: 230px;
 	display: inline-block;
-}
-/*Адаптация масштабов*/
-@media screen and (max-width: 320px) {
-@-ms-viewport { width: 320px; }
-}
-@media screen and (max-width: 320px) {
-@-ms-viewport { width: 320px; }
-}
-@media screen and (min-width: 768px) and (max-width: 959px) {
-@-ms-viewport { width: 768px; }
+	margin-right: 40px;
 }
