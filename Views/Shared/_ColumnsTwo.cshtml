@@ -56,3 +56,13 @@
     @RenderBody()
     @Html.Widget("main_column_after")
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('#active').css('color', '#000');
+        $('.block .list a').click(function(event) {
+            event.preventDefault();
+            $(this).attr('id', 'active');
+        })
+    });
+</script>

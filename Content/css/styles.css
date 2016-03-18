@@ -243,8 +243,8 @@ label, label + * {
    position:relative;
     background: url('../images/landingpage-background.png') ;
  
-    background-size:     cover;                 
-    background-repeat:   no-repeat;
+    background-size: cover;                 
+    background-repeat: no-repeat;
     background-position: center center; 
     opacity: 1;
    
@@ -507,6 +507,7 @@ label, label + * {
 }
 .inputs-Message textarea#Enquiry{
 	width: 100%;
+	min-height: 200px !important;
 }
 .inputs:after {
 	content: "";
@@ -1404,7 +1405,7 @@ a.Companylogo{
 	color: #2c3c50;
 }
 .block .list a:hover {
-	color: #4ab2f1;
+	color: #6db0d3;
 }
 .block a.product-picture {
 	display: none;
@@ -1869,6 +1870,7 @@ a.Companylogo{
     min-width:180px;
     margin: 0 auto;
 	/*text-transform: uppercase;*/
+	font-family: OS-Regular,Arial, Helvetica, sans-serif !important;
    
 }
 .item-box .product-box-add-to-cart-button:hover, .landingpage-item-box .product-box-add-to-cart-button:hover{
@@ -1976,7 +1978,7 @@ a.Companylogo{
 	margin: 0 0 50px;
 }
 .product-grid .title {
-	margin: 0 0 30px;
+	margin: 0 0 0px;
 	/*border-bottom: 1px solid #ddd;*/
 	padding: 0 0 15px;
 	font-size: 30px;
@@ -5383,7 +5385,7 @@ pre {
 .header-menu {
 	position: relative;
 	z-index: 1;
-	width: 90%;
+	width: 100%;
 	max-width: 600px;
 	margin: 0 auto 40px;
   
@@ -5441,6 +5443,30 @@ pre {
         }*/
 
         
+	.aboutuspage .aboutusdiv
+	{
+		position:relative;
+		margin:  0px  auto !important;
+		clear:both !important;
+		width:100% !important;
+		border:none !important;
+		padding:60px 0 0 0  !important;
+	}	
+	
+	.aboutuspage .aboutusdiv .aboutustext
+	{
+		margin: 30px  auto 0 auto !important;
+		padding:0 0 60px 0 !important;
+		border-bottom:solid 1px #dae4f4;
+	}
+	
+	.aboutuspage .aboutusdiv .aboutusimage, .aboutuspage .aboutusdiv .aboutustext, .aboutuspage .aboutusdiv .aboutustext *
+	{
+		position:relative;
+		clear:both !important;
+		width:100% !important;
+	}	
+		
  .footer-upper{
      display:none;
  }
@@ -5755,7 +5781,7 @@ pre {
 }
 .item-box .product-title {
     min-height: 42px;
-    margin: 0 0 5px;
+    margin: 0 0 10px;
 }
 
 
@@ -6012,6 +6038,7 @@ pre {
 	min-width: 150px;
 	padding: 0 20px;
     border-radius:100px;
+	font-family: sans-serif !important;
 }
 .product-list .item-box .add-to-compare-list-button,
 .product-list .item-box .add-to-wishlist-button {
@@ -6979,7 +7006,7 @@ pre {
 .shopping-cart-page .product-grid .item-box {
 	width: 24%;
     
-	margin: 0 0.5% 50px;
+	margin: 0 0% 50px;
    
 }
 .home-page .product-grid .item-box:nth-child(3n+1),
@@ -7502,20 +7529,24 @@ pre {
 	line-height: 38px;
 	text-align: center;
 	color: #2c3c50;
+	margin-bottom: 15px;
 }
 .contuctus-form{
-	height: 400px;
+	height: 450px;
 }
 
 .contact-button{
-	font-family: OS-SemiBold;
+	font-family: OS-Regular,Arial, Helvetica, sans-serif !important;
 	font-size: 18px;
 	color: white;
 	position: absolute;
 	left: 425px;
+	top: 350px;
 	width: 180px;
 	height: 44px;
 	border-radius: 33px;
+	border: 0px;
+	box-shadow: none !important;
 	background: url(/Themes/it4us/Content/images/Button-1.png);
 }
 
