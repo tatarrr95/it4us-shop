@@ -36,7 +36,7 @@
             </a>*@
 			<a href="@Url.RouteUrl("HomePage")" class="Companylogo">&nbsp;</a>
 			<div class="header-logo-text-div">
-			<a href="@Url.RouteUrl("HomePage")" class="header-logo-text">IT - путь к успеху</a>
+			<a href="@Url.RouteUrl("HomePage")" class="header-logo-text">IT — путь к успеху!</a>
 			</div>
         </div>
 		<div class="header-telephone">
@@ -45,6 +45,11 @@
 		<div class="search-form">
 		<form action="search" method="get">
 			<input type="search" name="q">
+			@*advence search params*@
+			<input name="sid" id="sid" type="checkbox" checked="checked" hidden="true" value="true">
+			<input name="sid" type="hidden" value="false">
+			<input name="adv" id="adv" type="checkbox" checked="checked" hidden="true" value="true">
+			<input name="adv" type="hidden" value="false">
 		</form>
 		</div>
 		@*
@@ -56,12 +61,20 @@
         @*МОДАЛЬНОЕ ОКНО, ЗДЕСЬ, ЧТОБЫ ВЕЗДЕ БЫЛО ВИДНО, ТАК КАК В КОНТАКТАХ СВОЙ ЛАЙАУТ*@
         <div class="modal" id="modal-login">
             <div>
-                <h2>Войти <p>в личный кабинет</p></h2>
+                <h2 class="modal-title">Авторизация</h2>
                 <div class="modal-form-wrapper">
-                    <form action="https://cabinet.it4us.ru/Account/Login?ReturnUrl=%2f" method="post">
-                        <input type="text" placeholder="login" name="login">
-                        <input type="password" placeholder="password" name="password">
-                        <input type="submit" class="login-button">
+                    <form action="https://cabinet.it4us.ru/Account/Enter?ReturnUrl=%2f" method="post">
+                        <div class="modal-part">
+                            <label class="modal-label" for="login">Имя</label>
+                            <input type="text" name="login" id="login" class="modal-input">
+                        </div>
+                        <div class="modal-part">
+                            <label class="modal-label" for="password">Пароль</label>
+                            <input type="password" name="password" id="password"  class="modal-input">
+                        </div>
+						<div class="modal-buttons">
+							<input type="submit" class="contact-button">
+						</div>
                     </form>
                 </div>
                 <a href="#close" title="Закрыть">Закрыть</a>
@@ -69,6 +82,15 @@
         </div>
 
     </div>
+
+    <script>
+    $(document).ready(function($) {
+        $('.price:contains("₽")').each(function () {
+            this.innerHTML = this.innerHTML.replace("₽", '<span class="ruble-style">₽</span>');
+        });
+    });
+
+    </script>
 </div>
 
 

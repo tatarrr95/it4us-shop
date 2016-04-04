@@ -59,7 +59,7 @@
                 {
                     <span class="price old-price">@Model.ProductPrice.OldPrice</span>
                 }
-                <span class="price actual-price">@Model.ProductPrice.Price</span>
+                <span class="price actual-price">@Model.ProductPrice.Price <!-- <span class="ruble-style">&#8381;</span> --></span>
                 @if (Model.ProductPrice.DisplayTaxShippingInfo)
                 {
                     var inclTax = EngineContext.Current.Resolve<IWorkContext>().TaxDisplayType == TaxDisplayType.IncludingTax;

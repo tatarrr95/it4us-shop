@@ -38,7 +38,7 @@
 
 
 
-<ul class="top-menu">
+<ul class="top-menu" id="head-block">
     @Html.Widget("header_menu_before")
    @* @{
         var rootCategories = Model.Categories.Where(x => x.IncludeInTopMenu).ToList();
@@ -73,14 +73,23 @@
         <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
     }
 	*@
-	<li><a href="@Url.RouteUrl("Topic", new {SeName = "t//aboutus"})">О компании</a></li>
-	<li><a href="@Url.RouteUrl("Topic", new {SeName = "t//ourclients"})">Наши клиенты</a></li>
+	<li><a href="@Url.RouteUrl("Topic", new {SeName = "aboutus"})">О компании</a></li>
+	<li><a href="@Url.RouteUrl("Topic", new {SeName = "ourclients"})">Наши клиенты</a></li>
     <li> <a href="@Url.RouteUrl("Category", new { SeName = "services" })">Услуги</a> </li>
 	<li> <a href="@Url.RouteUrl("Category", new { SeName = "products" })">Магазин</a> </li>
-	@*<li><a href="@Url.RouteUrl("Topic", new {SeName = "t//support365"})">@T("Support365")</a></li>*@
+	@*<li><a href="@Url.RouteUrl("Topic", new {SeName = "support365"})">@T("Support365")</a></li>*@
 	<li> <a href="@Url.RouteUrl("Category", new { SeName = "News" })">Статьи</a> </li>
 	<li><a href="@Url.RouteUrl("ContactUs")">Контакты</a></li>
 	<li><a href="#modal-login">Для клиентов</a></li>
+
+    <script>
+        jQuery(document).ready(function($) {
+        var url=document.location.href;
+        $.each($("#head-block a"),function(){
+        if(this.href==url){$(this).parent().addClass('active-menu-item');};
+        });
+        })(jQuery);
+    </script>
 	
     @Html.Widget("header_menu_after")
 </ul>
@@ -130,9 +139,8 @@
     <li> <a href="@Url.RouteUrl("Category", new { SeName = "services" })">Услуги</a> </li>
 	<li> <a href="@Url.RouteUrl("Category", new { SeName = "products" })">Магазин</a> </li>
 	@*<li><a href="@Url.RouteUrl("Topic", new {SeName = "t//support365"})">@T("Support365")</a></li>*@
-	<li> <a href="@Url.RouteUrl("Category", new { SeName = "News" })">Статьи</a> </li>
+	<li> <a href="@Url.RouteUrl("Category", new { SeName = "News" })">Новости</a> </li>
 	<li><a href="@Url.RouteUrl("ContactUs")">Контакты</a></li>
-
 	<li><a href="https://cabinet.it4us.ru">Для клиентов</a></li>
         @Html.Widget("mob_header_menu_after")
     </ul>
@@ -147,6 +155,14 @@
             });
         });
     </script>
+
+	@*<script>
+		(function ($) {
+        $('#head-block li a').on('click', function () {
+          $('#head-block li').siblings().removeClass('act').end().addClass('act');
+        })
+      })(jQuery);
+	</script>*@
 }
 
 

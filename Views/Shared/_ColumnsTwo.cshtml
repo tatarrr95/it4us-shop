@@ -58,11 +58,10 @@
 </div>
 
 <script>
-    $(document).ready(function(){
-        $('#active').css('color', '#000');
-        $('.block .list a').click(function(event) {
-            event.preventDefault();
-            $(this).attr('id', 'active');
-        })
-    });
+    jQuery(document).ready(function($) {
+        var url=document.location.href;
+        $.each($(".list a"),function(){
+        if(this.href==url){$(this).addClass('active-shop-menu-item');};
+        });
+        })(jQuery);
 </script>
